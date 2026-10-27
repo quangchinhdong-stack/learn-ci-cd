@@ -1,4 +1,4 @@
-name: First CI
+name: Test
 
 on: [push]
 
@@ -6,15 +6,14 @@ permissions:
   contents: read
 
 jobs:
-  hello:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Download repository code
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
 
-      - name: Print a message
-        run: echo "Hello, GitHub Actions!"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
 
-      - name: List repository files
-        run: ls -la
+      - name: Run tests
+        run: node test.cjs
