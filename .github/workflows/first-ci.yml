@@ -1,0 +1,20 @@
+name: First CI
+
+on: [push]
+
+permissions:
+  contents: read
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository code
+        uses: actions/checkout@v6
+
+      - name: Print a message
+        run: echo "Hello, GitHub Actions!"
+
+      - name: List repository files
+        run: ls -la
